@@ -1,82 +1,89 @@
-# Sipariş Takip Sistemi
+# 📦 Order Tracking System - Mobile App
 
-Bu proje, bir sipariş takip sistemini yönetmek için geliştirilmiş bir mobil uygulamadır. Uygulama, farklı kullanıcı rolleri (admin, pazarlama, sevkiyat) ile siparişlerin eklenmesi, takibi, onaylanması ve raporlanması gibi işlevleri içerir.
+A cross-platform mobile application built with React Native and Firebase, designed to streamline order management for organizations. The app provides role-based access for Admins, Sales, and Shipment staff, offering real-time updates, push notifications, and visual reporting capabilities.
 
-## Proje Yapısı
+---
 
-Proje, aşağıdaki ana bileşenlerden oluşmaktadır:
+## 🔧 Features
 
-- **App.tsx**: Uygulamanın ana giriş noktasıdır. Kullanıcı kimlik doğrulaması ve ana navigasyon yapısını içerir.
-- **Main.js**: Alt sekmeleri ve kullanıcı rolüne göre erişilebilir ekranları yönetir.
-- **Screens/**: Farklı işlevsellikleri içeren ekranların bulunduğu klasördür.
+### 🔑 Role-Based Functionality
 
-## Kullanıcı Rolleri ve İşlevler
+* **Admin**: Manage all orders, approve/reject submissions, oversee user roles, and access detailed reports.
+* **Sales**: Create new orders, track revisions, and monitor the status of submitted orders.
+* **Shipment**: View assigned orders, update delivery status, and review completed shipments.
 
-### Admin
-- **Sipariş Yönetimi**: Tüm siparişleri görüntüleme, durumlarını güncelleme ve onaylama.
-- **Kullanıcı Yönetimi**: Yeni kullanıcı ekleme, mevcut kullanıcıları silme ve rollerini yönetme.
-- **Raporlama**: Siparişlerin durumlarına ve pazarlamacılara göre raporlama yapma.
-- **Durum Paneli**: Siparişlerin durumlarını görüntüleme ve güncelleme.
+### 📅 Order Lifecycle Management
 
-### Pazarlama
-- **Sipariş Ekleme**: Yeni siparişler ekleme ve müşteri bilgilerini giriş yapma.
-- **Sipariş Listesi**: Kendi siparişlerini görüntüleme ve durumlarını takip etme.
-- **Revizeler**: Siparişlerde yapılan değişiklikleri görüntüleme ve onay bekleme durumlarını takip etme.
+* Create, update, and view order details.
+* Attach and preview invoices.
+* Monitor revision and approval status.
 
-### Sevkiyat
-- **Görevlerim**: Kendilerine atanan siparişleri görüntüleme ve durumlarını güncelleme.
-- **Sipariş Listesi**: Teslim ettikleri siparişleri görüntüleme.
+### 🌐 Notifications
 
-## Ekranlar ve İşlevler
+* Push notifications using Expo for real-time updates on order status changes and task assignments.
 
-### Sipariş Ekleme (SiparisEkle.js)
-- Müşteri adı, ürün listesi ve tarih bilgilerini giriş yapma.
-- Fatura ekleme ve görüntüleme.
+### 📊 Reporting
 
-### Sipariş Listesi (SiparisListesi.js)
-- Kullanıcı rolüne göre filtreleme yaparak siparişleri görüntüleme.
-- Sipariş detaylarına erişim.
+* Visual dashboards and charts using `react-native-chart-kit`.
+* Filter reports by sales personnel and order status.
 
-### Sipariş Detay (SiparisDetay.js)
-- Siparişin tüm detaylarını görüntüleme.
-- Admin için ürün listesini düzenleme imkanı.
+---
 
-### Admin Durum Paneli (AdminDurumPaneli.js)
-- Siparişlerin durumlarını görüntüleme ve güncelleme.
-- Farklı durumlara göre filtreleme yapma.
+## 📑 Project Structure
 
-### Raporlama (Raporlama.js)
-- Siparişlerin durumlarına ve pazarlamacılara göre grafiksel raporlama.
-- Tarih aralığına göre filtreleme yapma.
+```
+.
+├── App.tsx                 # Entry point, handles authentication and navigation
+├── Main.js                 # Role-based screen routing
+├── Screens/               # UI components for each role and task
+│   ├── SiparisEkle.js     # Add new orders
+│   ├── SiparisListesi.js  # View orders by role
+│   ├── SiparisDetay.js    # Detailed order view
+│   ├── AdminDurumPaneli.js# Admin dashboard
+│   ├── Raporlama.js       # Reporting and analytics
+│   ├── KullaniciYonetimi.js # User management
+│   ├── OnayBekleyenler.js # Approval queue
+│   └── Revizeler.js       # Revisions tracking
+```
 
-### Kullanıcı Yönetimi (KullaniciYonetimi.js)
-- Yeni kullanıcı ekleme ve mevcut kullanıcıları silme.
-- Kullanıcı rollerini yönetme.
+---
 
-### Onay Bekleyenler (OnayBekleyenler.js)
-- Onay bekleyen siparişleri görüntüleme ve onaylama/reddetme işlemleri.
+## 📁 Installation
 
-### Revizeler (Revizeler.js)
-- Revize edilen siparişleri görüntüleme ve durumlarını takip etme.
+1. Clone the repository:
 
-## Bildirim Sistemi
+   ```bash
+   git clone https://github.com/YourUsername/OrderTrackingSystem-MobileApp.git
+   ```
+2. Install dependencies:
 
-Uygulama, Expo Notifications kullanarak push bildirimleri gönderme ve alma özelliğine sahiptir. Bildirimler, sipariş durumlarındaki değişiklikler ve yeni görevler hakkında kullanıcıları bilgilendirmek için kullanılır.
+   ```bash
+   npm install
+   ```
+3. Start the app:
 
-## Bağımlılıklar
+   ```bash
+   npm start
+   ```
 
-- **expo**: Mobil uygulama geliştirme platformu.
-- **firebase**: Veritabanı ve kimlik doğrulama işlemleri için.
-- **react-navigation**: Uygulama içi navigasyon için.
-- **react-native-chart-kit**: Grafiksel raporlama için.
-- **expo-notifications**: Push bildirimleri için.
+---
 
-## Kurulum
+## 🚀 Technologies Used
 
-1. Projeyi klonlayın.
-2. Bağımlılıkları yükleyin: `npm install`
-3. Uygulamayı başlatın: `npm start`
+* **React Native** + **Expo**
+* **Firebase** (Auth & Realtime Database)
+* **React Navigation**
+* **Expo Notifications**
+* **React Native Chart Kit**
 
-## Lisans
+---
 
-Bu proje 0BSD lisansı altında lisanslanmıştır. 
+
+## ✨ Contribution
+
+Contributions are welcome! Feel free to fork the repository and submit a pull request.
+
+---
+
+## 👨‍💼 Contributors
+Muhammet Enes DEMIRKOL – Project Developer
