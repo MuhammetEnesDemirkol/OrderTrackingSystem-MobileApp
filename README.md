@@ -1,89 +1,55 @@
-# 📦 Order Tracking System - Mobile App
+# Sipariş Takip Mobil Uygulaması
 
-A cross-platform mobile application built with React Native and Firebase, designed to streamline order management for organizations. The app provides role-based access for Admins, Sales, and Shipment staff, offering real-time updates, push notifications, and visual reporting capabilities.
+Pazarlama, onay ve sevkiyat ekiplerinin sipariş sürecini tek uygulamada yürüttüğü React Native (Expo) uygulaması. Siparişin aşamaları ve onay durumu rol bazlı ekranlarla izlenir.
 
----
+## Çözdüğü problem
 
-## 🔧 Features
+Siparişler telefonla, mesajla ve kağıtla dolaştığında kimin onayladığı, neyin hazırlandığı ve hangi siparişin teslim edildiği takip edilemez. Uygulama her adımı ilgili role gösterir ve kayıt altına alır.
 
-### 🔑 Role-Based Functionality
+## Roller
 
-* **Admin**: Manage all orders, approve/reject submissions, oversee user roles, and access detailed reports.
-* **Sales**: Create new orders, track revisions, and monitor the status of submitted orders.
-* **Shipment**: View assigned orders, update delivery status, and review completed shipments.
+| Rol | Yapabildikleri |
+| --- | --- |
+| `pazarlama` | Sipariş ekler, kendi siparişlerini ve revizelerini izler. |
+| `admin` | Onay bekleyenleri yönetir, tüm siparişleri, kullanıcıları ve raporları görür. |
+| `sevkiyat` | Kendine atanan görevleri görür, hazırlanan siparişleri takip eder. |
 
-### 📅 Order Lifecycle Management
+## Özellikler
 
-* Create, update, and view order details.
-* Attach and preview invoices.
-* Monitor revision and approval status.
+- Sipariş ekleme, listeleme ve detay görüntüleme.
+- Onay bekleyenler, revizeler ve hazırlananlar ekranları.
+- Kullanıcı ekleme ve yönetimi (admin).
+- Raporlama: grafikli özet (`react-native-chart-kit`).
+- Expo ile anlık bildirim; yönetici bildirimleri Firebase Admin SDK ile gönderilir.
+- Belge seçme (`expo-document-picker`).
 
-### 🌐 Notifications
+## Teknoloji yığını
 
-* Push notifications using Expo for real-time updates on order status changes and task assignments.
+React Native, Expo 52, React Navigation, Firebase (Authentication, Firestore, Storage), Firebase Admin SDK, Expo Notifications.
 
-### 📊 Reporting
-
-* Visual dashboards and charts using `react-native-chart-kit`.
-* Filter reports by sales personnel and order status.
-
----
-
-## 📑 Project Structure
+## Proje yapısı
 
 ```
-.
-├── App.tsx                 # Entry point, handles authentication and navigation
-├── Main.js                 # Role-based screen routing
-├── Screens/               # UI components for each role and task
-│   ├── SiparisEkle.js     # Add new orders
-│   ├── SiparisListesi.js  # View orders by role
-│   ├── SiparisDetay.js    # Detailed order view
-│   ├── AdminDurumPaneli.js# Admin dashboard
-│   ├── Raporlama.js       # Reporting and analytics
-│   ├── KullaniciYonetimi.js # User management
-│   ├── OnayBekleyenler.js # Approval queue
-│   └── Revizeler.js       # Revisions tracking
+App.tsx, Main.js       Giriş ve role göre ekran yönlendirme
+screens/               Rol ekranları (SiparisEkle, SiparisListesi, OnayBekleyenler, Raporlama, ...)
+firebase.js            İstemci Firebase ayarları (örnek değerler; kendi projenizle doldurun)
+firebaseAdmin.js       Bildirimler için Admin SDK
+notifications.js       Bildirim kaydı
+scripts/               Dağıtımda servis hesabı dosyasını ortam değişkeninden üreten betik
 ```
 
----
+## Kurulum
 
-## 📁 Installation
+```bash
+npm install
+```
 
-1. Clone the repository:
+`firebase.js` içindeki örnek değerleri kendi Firebase projenizin bilgileriyle değiştirin. Admin SDK için servis hesabı dosyasını (`firebase-admin.json`) depoya eklemeyin; dağıtımda `FIREBASE_SERVICE_ACCOUNT` ortam değişkeninden üretilir.
 
-   ```bash
-   git clone https://github.com/YourUsername/OrderTrackingSystem-MobileApp.git
-   ```
-2. Install dependencies:
+```bash
+npm start
+```
 
-   ```bash
-   npm install
-   ```
-3. Start the app:
+## Durum
 
-   ```bash
-   npm start
-   ```
-
----
-
-## 🚀 Technologies Used
-
-* **React Native** + **Expo**
-* **Firebase** (Auth & Realtime Database)
-* **React Navigation**
-* **Expo Notifications**
-* **React Native Chart Kit**
-
----
-
-
-## ✨ Contribution
-
-Contributions are welcome! Feel free to fork the repository and submit a pull request.
-
----
-
-## 👨‍💼 Contributors
-Muhammet Enes DEMIRKOL – Project Developer
+Örnek/geliştirme aşamasında bir uygulamadır; canlı kullanım için Firebase güvenlik kurallarının ayrıca yazılması gerekir.
